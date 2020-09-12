@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
-import 'package:to_do_app/constants.dart';
 import 'package:to_do_app/database_helper.dart';
 import 'package:to_do_app/model/task_model.dart';
 
@@ -59,13 +56,13 @@ class TasksList extends ChangeNotifier{
 
   void _update(String title, String description,int index,int prevDatetime) async {
     print("update $index, $title,$prevDatetime---------------");
-    // row to update
     Map<String, dynamic> row = {
       DatabaseHelper.title : title,
       DatabaseHelper.description  : description,
       DatabaseHelper.dateTime : (new DateTime.now()).millisecondsSinceEpoch,
     };
     final rowsAffected = await dbHelper.update(row,prevDatetime);
+    print(rowsAffected);
   }
 
   void _delete(int dateTimeValue) async {

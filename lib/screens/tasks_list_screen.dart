@@ -7,8 +7,7 @@ import 'package:to_do_app/screens/add_task_screen.dart';
 class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var providerValue=Provider.of<TasksList>(context);
-    providerValue.getTaskList();
+    Provider.of<TasksList>(context).getTaskList();
     return Scaffold(
           appBar: AppBar(
             title: Text(

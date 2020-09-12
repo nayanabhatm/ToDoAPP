@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:to_do_app/constants.dart';
-import 'package:to_do_app/model/task_model.dart';
 import 'package:to_do_app/screens/tasks_list_screen.dart';
 import 'model/task_list_model.dart';
 
