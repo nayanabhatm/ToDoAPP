@@ -1,3 +1,5 @@
+/* Individual todoitem */
+
 class Task{
   String title;
   String description;

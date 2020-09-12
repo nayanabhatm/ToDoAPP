@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_app/model/task_list_model.dart';
 
-
+//Screen to add new task//
 class AddTaskScreen extends StatefulWidget {
   final String title,description;
   final int index,dateTimeValue;
@@ -22,8 +22,8 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
   @override
   Widget build(BuildContext context) {
     var providerValue=Provider.of<TasksList>(context,listen: false);
-    titleController.text=widget.title;
-    descriptionController.text=widget.description;
+    titleController.text=widget.title; // get the existing title value and display that in the textformfield
+    descriptionController.text=widget.description; // get the existing description value and display that in the textformfield
     return Scaffold(
       appBar: AppBar(),
       body: Builder(
@@ -61,11 +61,16 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                           duration: Duration(milliseconds: 400) ,
                           content: Text('Task Saved!'),
                           backgroundColor: Colors.deepPurpleAccent,
-                        ));
+                        )
+                        );  // if title is not empty, show saved snackbar
                         if(widget.title!=null && widget.title.length > 0){
-                          providerValue.updateTask(widget.index,titleController.text,descriptionController.text,widget.dateTimeValue);}
-                        else
-                          providerValue.addNewTask(titleController.text, descriptionController.text ?? '',false);
+                          //call dbupdate if title already exists
+                          providerValue.updateTask(widget.index,titleController.text,descriptionController.text,widget.dateTimeValue);
+                        }
+                        else {
+                          //else insert a new task
+                          providerValue.addNewTask(titleController.text,descriptionController.text ?? '', false);
+                        }
                         Timer(Duration(milliseconds: 470), (){
                             Navigator.pop(context);
                         });

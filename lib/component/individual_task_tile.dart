@@ -12,9 +12,6 @@ class IndividualTaskTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onLongPress: (){
-          print("sxx");
-      },
       onTap: (){
         Navigator.push(context,MaterialPageRoute(builder: (context) => AddTaskScreen(title:taskTitle,description:taskDescription,index:index,dateTimeValue:dateTimeValue)));
       },
